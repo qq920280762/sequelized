@@ -14,7 +14,6 @@ const utils         = require('./utils');
 
 
 const index = require('./routes/index');
-const users = require('./routes/users');
 
 const app = express();
 
@@ -86,7 +85,6 @@ app.all('*', function (req, res, next) {
 });
 
 app.use('/', index);
-app.use('/users', users);
 
 // 404或转发错误处理
 app.use(function (req, res, next) {
@@ -101,7 +99,8 @@ app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.SESSION = req.session;
     res.locals.CDN     = config.CDN;
-    res.locals.message = err.message;
+    console.log(req.app.get('env'));
+    res.locals.message = req.app.get('env') === 'development' ? err.message : 'invited fail';
     res.locals.error   = req.app.get('env') === 'development' ? err : {};
     // render the error page
     res.status(err.status || 500);

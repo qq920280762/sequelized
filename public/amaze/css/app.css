@@ -620,6 +620,13 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   position: relative;
   top: -2px;
 }
+.tpl-login-other-way {
+    color: rgba(206, 206, 207, 0.33);
+    font-size: 14px;
+    position: relative;
+    top: -2px;
+}
+
 .tpl-login-content-info {
   color: #B3B3B3;
   font-size: 14px;

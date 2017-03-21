@@ -4,15 +4,39 @@ var services     = require('../services');
 var config       = require('../config');
 var adminService = services.admin;
 
+
+const users = require('./users');
+router.use('/users', users);
+
 /* GET home page. */
+
 router.get('/index', function (req, res, next) {
-    if (req.accountInfo) {
+    if (req[config.userCache.name]) {
         res.redirect('/');
     }
     else {
         res.render('user/login');
     }
 });
+
+router.get('/login', function (req, res, next) {
+    if (req[config.userCache.name]) {
+        res.redirect('/');
+    }
+    else {
+        res.render('user/login');
+    }
+});
+
+router.get('/register', function (req, res, next) {
+    if (req[config.userCache.name]) {
+        res.redirect('/');
+    }
+    else {
+        res.render('user/register');
+    }
+});
+
 router.get('/', function (req, res, next) {
     if (req[config.userCache.name]) {
         var accountSv = new adminService.accountService();
