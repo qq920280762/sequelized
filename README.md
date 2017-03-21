@@ -1,0 +1,2 @@
+# sequelized
+node-sequelize-study
