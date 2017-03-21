@@ -39,7 +39,6 @@
     "model" : {
       "isSynchronized":true,
       "mustCreate":false
-
     },
     "CDN":"/static/"
 

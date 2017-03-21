@@ -3,7 +3,7 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('account', {
         id             : {
-            field        : "account_id",
+            field        : "user_id",
             type         : DataTypes.INTEGER(11).UNSIGNED,
             allowNull    : false,
             primaryKey   : true,
@@ -11,6 +11,20 @@ module.exports = function (sequelize, DataTypes) {
             unique       : "id_UNIQUE",
             //注意comment在V1.7+后对字段无效 只对表有效
             comment      : "用户ID"
+        },
+        header: {
+            field       : "header",
+            type        : DataTypes.STRING(100),
+            allowNull   : false,
+            defaultValue: '',
+            comment     : "头像"
+        },
+        email: {
+            field       : "email",
+            type        : DataTypes.STRING(45),
+            allowNull   : false,
+            defaultValue: '',
+            comment     : "邮箱"
         },
         nickname: {
             field       : "nickname",
@@ -29,6 +43,7 @@ module.exports = function (sequelize, DataTypes) {
             field    : "signature",
             type     : DataTypes.STRING(100),
             allowNull: false,
+            defaultValue: '',
             comment  : "职称"
         },
         sex            : {
@@ -43,12 +58,13 @@ module.exports = function (sequelize, DataTypes) {
             field    : "cellphone",
             type     : DataTypes.STRING(15),
             allowNull: false,
+            defaultValue: '',
             unique   : "cellphone_UNIQUE",
             comment  : "手机号"
         },
         accountNo:{
             field    : "account_no",
-            type     : DataTypes.STRING(15),
+            type     : DataTypes.STRING(45),
             allowNull: false,
             unique   : "accountNo_UNIQUE",
             comment  : "账号"
@@ -82,7 +98,7 @@ module.exports = function (sequelize, DataTypes) {
             field       : "ip_address",
             type        : DataTypes.STRING(15),
             allowNull   : false,
-            defaultValue: DataTypes.NOW,
+            defaultValue: '',
             comment     : "登录IP地址"
 
         }
