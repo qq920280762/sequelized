@@ -1,0 +1,46 @@
+{
+    "session": {
+        "useRedis": false,
+        "server"  : {
+            "prefix":null,
+            "host": "127.0.0.1",
+            "port": 6379,
+            "pass": "redispwd",
+            "db"  : 9,
+            "ttl" :600,
+            "logErrors" : true
+        },
+        "secret":"admin",
+        "name" :"tokenId",
+        "rolling" : true,
+        "resave" : true,
+        "saveUninitialized" : true
+    },
+    "cookie": {
+        "domain":null,
+        "path": "/",
+        "httpOnly":true,
+        "secure":false,
+        "maxAge":6000000
+    },
+    "encryption":{
+        "key":"Admin",
+        "charset":"utf-8",
+        "algorithm":"md5"
+    },
+    "log":{
+        "writeFile":false
+    },
+    "userCache":{
+      "name" : "accountInfo",
+      "sign_name" : "sign",
+      "key_name" : "userId"
+    },
+    "model" : {
+      "isSynchronized":true,
+      "mustCreate":false
+
+    },
+    "CDN":"/static/"
+
+}

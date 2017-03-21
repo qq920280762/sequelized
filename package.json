@@ -1,0 +1,23 @@
+{
+  "name": "sequelized",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.16.0",
+    "connect-redis": "~3.1.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "ejs": "~2.5.5",
+    "express": "~4.14.1",
+    "express-session": "~1.14.2",
+    "file-stream-rotator": "0.0.7",
+    "morgan": "~1.7.0",
+    "mysql": "^2.13.0",
+    "redis": "~2.6.3 ",
+    "sequelize": "^3.30.2",
+    "serve-favicon": "~2.3.2"
+  }
+}

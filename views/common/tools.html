@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="<%=CDN%>amaze/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=CDN%>amaze/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="<%=CDN%>amaze/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="<%=CDN%>amaze/css/admin.css">
+    <link rel="stylesheet" href="<%=CDN%>amaze/css/app.css">
+    <script src="<%=CDN%>amaze/js/echarts.min.js"></script>
+</head>
+
+<body data-type="index">
+
+<% include _header.html %>
+
+<div class="tpl-page-container tpl-page-header-fixed">
+
+    <% include _left-sidebar.html %>
+
+    <div class="tpl-content-wrapper">
+
+        <div class="doc-actions">
+            <div class="doc-act-inner"><span class="doc-act-clip am-icon-copy"> Copy</span></div>
+        </div>
+
+        <div class="doc-example">
+            <div class="am-g">
+                <div class="am-u-md-8 am-u-sm-centered">
+                    <form class="am-form">
+                        <fieldset class="am-form-set"><input type="text" placeholder="取个名字"> <input type="text"
+                                                                                                    placeholder="设个密码">
+                            <input type="email" placeholder="填下邮箱"></fieldset>
+                        <button type="submit" class="am-btn am-btn-primary am-btn-block">注册个账号</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="am-btn-group">
+            <button class="am-btn am-btn-secondary">下拉按钮</button>
+            <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-secondary am-dropdown-toggle" data-am-dropdown-toggle><span
+                            class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                    <li class="am-dropdown-header">标题</li>
+                    <li><a href="#">快乐的方式不只一种</a></li>
+                    <li class="am-active"><a href="#">最荣幸是</a></li>
+                    <li><a href="#">谁都是造物者的光荣</a></li>
+                    <li class="am-disabled"><a href="#">就站在光明的角落</a></li>
+                    <li class="am-divider"></li>
+                    <li><a href="#">天空海阔 要做最坚强的泡沫</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-btn-group">
+            <button type="button" class="am-btn am-btn-default">左手</button>
+        </div>
+
+        <a href="" class="am-close am-close-alt am-icon-times"></a>
+
+        <span class="am-icon-qq"> QQ</span>
+        <span class="am-icon-weixin"> Wechat</span>
+
+        <i class="am-icon-spinner am-icon-spin am-icon-fw"></i>
+        <i class="am-icon-refresh am-icon-spin am-icon-fw"></i>
+        <i class="am-icon-circle-o-notch am-icon-spin am-icon-fw"></i>
+        <i class="am-icon-cog am-icon-spin am-icon-fw"></i>
+        <i class="am-icon-gear am-icon-spin am-icon-fw"></i>
+
+        <i class="am-icon-spinner am-icon-pulse am-icon-fw"></i>
+
+
+        <div class="am-g">
+            <div class="am-u-lg-6">
+                <div class="am-input-group am-input-group-danger">
+                      <span class="am-input-group-label">
+                        <input type="checkbox">
+                      </span>
+                    <input type="text" class="am-form-field">
+                </div>
+            </div>
+            <div class="am-u-lg-6">
+                <div class="am-input-group am-input-group-primary">
+                      <span class="am-input-group-btn">
+                        <button class="am-btn am-btn-primary" type="button"><span class="am-icon-search"></span>
+                        </button>
+                      </span>
+                    <input type="text" class="am-form-field">
+                </div>
+            </div>
+        </div>
+
+
+        <ul class="am-list">
+            <li><a href="#" class="am-text-truncate">每个人都有一个死角， 自己走不出来，别人也闯不进去。我把最深沉的秘密放在那里。每个人都有一道伤口，
+                    或深或浅，盖上布，以为不存在。</a></li>
+        </ul>
+
+
+        <ul class="am-list am-list-static am-list-border">
+            <li>
+                <i class="am-icon-home am-icon-fw"></i>
+                每个人都有一个死角， 自己走不出来，别人也闯不进去。
+            </li>
+            <li>
+                <i class="am-icon-book am-icon-fw"></i>
+                我把最深沉的秘密放在那里。
+            </li>
+            <li><i class="am-icon-pencil am-icon-fw"></i>你不懂我，我不怪你。</li>
+        </ul>
+
+
+        <div class="am-cf">
+            <button class="am-btn am-btn-success am-fl">向左浮动</button>
+            <button class="am-btn am-btn-success am-fr">向右浮动</button>
+        </div>
+
+
+        <form action="" class="am-form am-form-inline">
+            <div class="am-form-group am-form-icon">
+                <i class="am-icon-calendar"></i>
+                <input type="text" class="am-form-field" placeholder="日期">
+            </div>
+
+            <div class="am-form-group am-form-icon">
+                <i class="am-icon-clock-o"></i>
+                <input type="text" class="am-form-field" placeholder="时间">
+            </div>
+        </form>
+
+
+        <ul class="am-nav">
+            <li class="am-active"><a href="#">首页</a></li>
+            <li><a href="#">开始使用</a></li>
+            <li><a href="#">按需定制</a></li>
+        </ul>
+
+        <ul class="am-nav am-nav-pills">
+            <li class="am-active"><a href="#">首页</a></li>
+            <li><a href="#">开始使用</a></li>
+            <li><a href="#">按需定制</a></li>
+        </ul>
+
+
+        <ul class="am-nav am-nav-tabs">
+            <li class="am-active"><a href="#">首页</a></li>
+            <li><a href="#">开始使用</a></li>
+            <li><a href="#">按需定制</a></li>
+            <li class="am-nav-divider"></li>
+        </ul>
+
+
+        #平均分配
+        <ul class="am-nav am-nav-pills am-nav-justify">
+            <li class="am-active"><a href="#">首页</a></li>
+            <li><a href="#">开始使用</a></li>
+            <li><a href="#">按需定制</a></li>
+            <li><a href="#">加入我们</a></li>
+        </ul>
+
+        <ul class="am-nav am-nav-tabs am-nav-justify">
+            <li class="am-active"><a href="#">首页</a></li>
+            <li><a href="#">开始使用</a></li>
+            <li><a href="#">加入我们</a></li>
+        </ul>
+
+
+        <ul class="am-nav am-nav-tabs">
+            <li class="am-active"><a href="#">首页</a></li>
+            <li><a href="#">项目</a></li>
+            <li class="am-dropdown" data-am-dropdown>
+                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                    菜单 <span class="am-icon-caret-down"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    ...
+                </ul>
+            </li>
+        </ul>
+
+
+        <ul class="am-pagination am-pagination-right ">
+            <li><a href=""><span class="am-icon-angle-double-left"></span></a></li>
+            <li class="am-active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href=""><span class="am-icon-angle-double-right"></span></a></li>
+        </ul>
+
+
+        <div class="am-progress ">
+            <div class="am-progress-bar" style="width: 30%">30%</div>
+            <div class="am-progress-bar am-progress-bar-success" style="width: 60%">60%</div>
+            <div class="am-progress-bar am-progress-bar-danger" style="width: 10%">10%</div>
+        </div>
+
+        <div class="am-progress am-progress-xs">
+            <div class="am-progress-bar am-progress-bar-secondary" style="width: 30%"></div>
+        </div>
+
+        <div class="am-progress">
+            <div class="am-progress-bar am-progress-bar-success" style="width: 45%"></div>
+        </div>
+
+        <div class="am-progress">
+            <div class="am-progress-bar am-progress-bar-warning" style="width: 60%"></div>
+        </div>
+
+        <div class="am-progress am-active am-progress-striped">
+            <div class="am-progress-bar am-progress-bar-danger" style="width: 75%"></div>
+        </div>
+
+
+        #缩略图加图文
+        <div class="am-g">
+            <div class="am-u-sm-6">
+                <div class="am-thumbnail"><img
+                            src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView2/0/w/600" alt="">
+                    <div class="am-thumbnail-caption"><h3>百年孤独选</h3>
+                        <p>无论走到哪里，都应该记住，过去都是假的，回忆是一条没有尽头的路，一切以往的春天都不复存在，就连那最坚韧而又狂乱的爱情归根结底也不过是一种转瞬即逝的现实。</p>
+                        <p>
+                            <button class="am-btn am-btn-primary">孤独</button>
+                            <button class="am-btn am-btn-default">百年</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script src="<%=CDN%>amaze/js/jquery.min.js"></script>
+<script src="<%=CDN%>amaze/js/amazeui.min.js"></script>
+<script src="<%=CDN%>amaze/js/iscroll.js"></script>
+<script src="<%=CDN%>amaze/js/app.js"></script>
+
+</body>
+
+</html>

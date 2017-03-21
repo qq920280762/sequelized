@@ -1,0 +1,54 @@
+{
+  "admindb":{
+    "database":"buser",
+    "user": "root",
+    "password": "123456",
+    "properties":{
+      "dialect":"mysql",
+      "host"   : "127.0.0.1",
+      "port"   : 3306,
+      "pool"   : {
+        "max" : 5,
+        "min" : 0,
+        "idle": 10000
+      },
+      "define": {
+        "engine" : "InnoDB",
+        "freezeTableName":true,
+        "timestamps":false,
+        "charset"   : "utf8",
+        "initialAutoIncrement":1,
+        "underscored" : true,
+        "underscoredAll":true
+      },
+      "logging":false,
+      "timezone": "+08:00"
+    }
+  },
+  "auserdb":{
+    "database":"auser",
+    "user": "root",
+    "password": "123456",
+    "properties":{
+      "dialect":"mysql",
+      "host"   : "127.0.0.1",
+      "port"   : 3306,
+      "pool"   : {
+        "max" : 5,
+        "min" : 0,
+        "idle": 10000
+      },
+      "define": {
+        "engine" : "InnoDB",
+        "freezeTableName":true,
+        "timestamps":false,
+        "charset"   : "utf8",
+        "initialAutoIncrement":1,
+        "underscored" : true,
+        "underscoredAll":true
+      },
+      "logging":false,
+      "timezone": "+08:00"
+    }
+  }
+}
