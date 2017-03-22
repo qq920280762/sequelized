@@ -11,21 +11,22 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             comment      : "按钮ID"
         },
-        btnName   : {
-            field    : "btn_name",
+        name   : {
+            field    : "name",
             type     : DataTypes.STRING(45),
             allowNull: false,
             comment  : "按钮名字"
 
         },
-        btnIcon   : {
-            field    : "btn_icon",
+        icon   : {
+            field    : "icon",
             type     : DataTypes.STRING(45),
             allowNull: false,
+            defaultValue: 'javascript:;',
             comment  : "按钮icon"
         },
-        btnUrl    : {
-            field    : "btn_url",
+        url    : {
+            field    : "url",
             type     : DataTypes.STRING(45),
             allowNull: false,
             comment  : "按钮url"

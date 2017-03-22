@@ -30,7 +30,7 @@ router.get('/login', function (req, res, next) {
 
 router.get('/register', function (req, res, next) {
     if (req[config.userCache.name]) {
-        res.redirect('/');
+        res.render('user/register');
     }
     else {
         res.render('user/register');

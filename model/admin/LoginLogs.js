@@ -2,7 +2,7 @@
 
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('login_logs', {
-        loginLogsId : {
+        id : {
             field        : "login_logs_id",
             type         : DataTypes.INTEGER(11).UNSIGNED,
             allowNull    : false,
@@ -11,18 +11,19 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             comment      : "登陆日志ID"
         },
-        loginAccount: {
-            field    : "login_account",
+        accountId      : {
+            field    : "account_id",
             type     : DataTypes.INTEGER(11).UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            comment  : "用户ID"
         },
-        loginIp     : {
-            field    : "login_ip",
+        ip     : {
+            field    : "ip",
             type     : DataTypes.STRING(45),
             allowNull: false
         },
-        loginDevice : {
-            field    : "login_device",
+        device : {
+            field    : "device",
             type     : DataTypes.STRING(45),
             allowNull: false
         },

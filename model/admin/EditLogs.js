@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize,DataTypes) {
     return sequelize.define('edit_logs', {
-        editLogsId: {
+        id: {
             field:"editLogs_id",
             type         : DataTypes.INTEGER(11).UNSIGNED,
             allowNull    : false,
@@ -11,25 +11,31 @@ module.exports = function(sequelize,DataTypes) {
             autoIncrement: true,
             comment      : "编辑日志ID"
         },
-        editAccount: {
-            field:"edit_account",
+        accountId      : {
+            field    : "account_id",
             type     : DataTypes.INTEGER(11).UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            comment  : "用户ID"
         },
-        logsTitle  : {
-            field:"logs_title",
-            type     : DataTypes.STRING(45),
-            allowNull: false
+        description  : {
+            field:"description",
+            type     : DataTypes.STRING(100),
+            allowNull: false,
+            comment     : "日志描述"
         },
-        logsDesc   : {
-            field:"logs_desc",
-            type     : DataTypes.STRING(45),
-            allowNull: false
+        logInfo   : {
+            field:"log_info",
+            type     : DataTypes.STRING(5000),
+            allowNull: false,
+            comment     : "日志详情"
         },
-        editType   : {
-            field:"edit_type",
-            type     : DataTypes.INTEGER(2).UNSIGNED,
-            allowNull: false
+        affectLevel   : {
+            field       : "affect_level",
+            type        : DataTypes.ENUM,
+            values      : ["0", "1", "2"],
+            allowNull   : false,
+            defaultValue: '0',
+            comment     : "影响级别 0低 1中 2高"
         },
         createTime: {
             field       : "create_time",

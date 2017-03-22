@@ -11,33 +11,33 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             comment      : "权限ID"
         },
-        privilegeMaster     : {
-            field    : "privilege_master",
+        master     : {
+            field    : "master",
             type     : DataTypes.ENUM,
             values   : ["account_id", "role_id"],
             allowNull: false,
             comment  : "用户ID或者角色ID"
         },
-        privilegeMasterValue: {
-            field    : "privilege_master_value",
+        masterValue: {
+            field    : "master_value",
             type     : DataTypes.INTEGER(11).UNSIGNED,
             allowNull: false,
             comment  : "用户ID或者角色ID的值"
         },
-        privilegeAccess     : {
-            field    : "privilege_access",
+        access     : {
+            field    : "access",
             type     : DataTypes.ENUM,
             values   : ["menu_no", "btn_no"],
             allowNull: false,
             comment  : "菜单号或按钮号"
         },
-        privilegeAccessValue: {
-            field    : "privilege_access_value",
+        accessValue: {
+            field    : "access_value",
             type     : DataTypes.STRING(45),
             allowNull: false,
             comment  : "用户ID或者角色ID的值"
         },
-        privilegeOperation  : {
+        status  : {
             field       : "privilege_operation",
             type        : DataTypes.ENUM,
             values      : ["enabled", "disabled"],
@@ -45,8 +45,8 @@ module.exports = function (sequelize, DataTypes) {
             allowNull   : false,
             comment     : "权限启用或禁用"
         },
-        privilegeAcl        : {
-            field    : "privilege_acl",
+        acl        : {
+            field    : "acl",
             type     : DataTypes.INTEGER(11).UNSIGNED,
             allowNull: false,
             comment  : "权限值"

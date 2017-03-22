@@ -148,6 +148,25 @@ function getIpAddress(req) {
     return ipAddress;
 };
 
+/**
+ * 递归获取树数
+ * @param data
+ * @param pid
+ * @returns {Array}
+ */
+function tree(data,pid){
+    var result = [] , temp;
+    for(var i in data){
+        if(data[i].pid==pid){
+            result.push(data[i]);
+            temp = tree(data,data[i].id);
+            if(temp.length>0){
+                data[i].children=temp;
+            }
+        }
+    }
+    return result;
+}
 
 module.exports.getLogTime   = getLogTime;
 module.exports.hideTextInfo = hideTextInfo;
@@ -157,3 +176,4 @@ module.exports.encryption   = encryption;
 module.exports.sign   = sign;
 module.exports.md5          = md5;
 module.exports.keyDesc      = keyDesc;
+module.exports.getTree      = tree;

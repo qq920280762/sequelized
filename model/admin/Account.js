@@ -3,7 +3,7 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('account', {
         id             : {
-            field        : "user_id",
+            field        : "account_id",
             type         : DataTypes.INTEGER(11).UNSIGNED,
             allowNull    : false,
             primaryKey   : true,
@@ -103,6 +103,7 @@ module.exports = function (sequelize, DataTypes) {
 
         }
     }, {
+        initialAutoIncrement:10000,
         comment: "用户账号表"
     });
 }

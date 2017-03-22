@@ -11,8 +11,8 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             comment      : "角色ID"
         },
-        roleName       : {
-            field    : "role_name",
+        name       : {
+            field    : "name",
             type     : DataTypes.STRING(45),
             allowNull: false,
             comment  : "角色名字"
@@ -24,18 +24,12 @@ module.exports = function (sequelize, DataTypes) {
             unique   : "no_UNIQUE",
             comment  : "角色编号"
         },
-        roleDesc       : {
-            field    : "role_desc",
+        memo       : {
+            field    : "memo",
             type     : DataTypes.STRING(45),
             allowNull: false,
-            comment  : "角色描述"
+            comment  : "备注"
 
-        },
-        createAccountId: {
-            field    : "create_account_id",
-            type     : DataTypes.INTEGER(11).UNSIGNED,
-            allowNull: false,
-            comment  : "创建者ID"
         },
         createTime     : {
             field       : "create_time",
@@ -44,19 +38,6 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: DataTypes.NOW,
             comment     : "创建时间"
 
-        },
-        modifyAccountId: {
-            field    : "modify_account_id",
-            type     : DataTypes.INTEGER(11).UNSIGNED,
-            allowNull: false,
-            comment  : "修改者ID"
-        },
-        modifyTime     : {
-            field       : "modify_time",
-            type        : DataTypes.DATE,
-            allowNull   : false,
-            defaultValue: DataTypes.NOW,
-            comment     : "修改时间"
         }
     }, {
         comment: "角色表"

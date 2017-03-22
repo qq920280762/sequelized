@@ -11,8 +11,8 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             comment      : "菜单ID"
         },
-        menuNo       : {
-            field    : "menu_no",
+        menNo       : {
+            field    : "men_no",
             type     : DataTypes.STRING(45),
             allowNull: false,
             unique   : "no_UNIQUE",
@@ -24,30 +24,31 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             comment  : "域id"
         },
-        menuParentNo : {
-            field       : "menu_parent_no",
+        pMenNo : {
+            field       : "p_men_no",
             type        : DataTypes.STRING(45),
             allowNull   : false,
             defaultValue: -1,
             comment     : "上级菜单编号"
         },
-        menuName     : {
-            field    : "menu_name",
+        name     : {
+            field    : "name",
             type     : DataTypes.STRING(45),
             allowNull: false,
             comment  : "菜单名字"
         },
-        menuUrl      : {
-            field       : "menu_url",
+        url      : {
+            field       : "url",
             type        : DataTypes.STRING(100),
             allowNull   : false,
-            defaultValue: '#',
+            defaultValue: 'javascript:;',
             comment     : "菜单url"
         },
-        menuIcon     : {
-            field    : "menu_icon",
+        icon     : {
+            field    : "icon",
             type     : DataTypes.STRING(100),
             allowNull: false,
+            defaultValue:'',
             comment  : "菜单icon"
         }
     }, {
