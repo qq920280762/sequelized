@@ -6,7 +6,6 @@ const ApplicationService        = require('./ApplicationService');
 const ButtonService             = require('./ButtonService');
 const EditLogsService           = require('./EditLogsService');
 const LoginLogsService          = require('./LoginLogsService');
-const RegisterLogsService       = require('./RegisterLogsService');
 const MenuService               = require('./MenuService');
 const PrivilegeService          = require('./PrivilegeService');
 const RoleService               = require('./RoleService');
@@ -20,7 +19,6 @@ module.exports = {
     buttonService            : ButtonService,
     editLogsService          : EditLogsService,
     loginLogsService         : LoginLogsService,
-    registerLogsService      : RegisterLogsService,
     menuService              : MenuService,
     privilegeService         : PrivilegeService,
     roleService              : RoleService

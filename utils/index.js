@@ -141,7 +141,7 @@ function getIpAddress(req) {
     var ipAddress = (req.headers['x-forwarded-for'] ||
     req.connection.remoteAddress ||
     req.socket.remoteAddress ||
-    (req.connection.socket || {}).remoteAddress || '');
+    (req.connection.socket || {}).remoteAddress || '').replace('::ffff:', '');
     if (ipAddress.indexOf("::1") > -1) {
         ipAddress = "172.0.0.1";
     }

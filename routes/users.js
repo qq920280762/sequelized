@@ -41,7 +41,7 @@ function userLogin(req, res, next) {
     //实例化
     let accountSv = new adminService.accountService();
 
-    accountSv.getOne({password: utils.md5(password), $or: {cellphone: account, accountNo: account,email: account}})
+    accountSv.getOne({password: utils.md5(password), $or: {cellphone: account, nickname: account,email: account}})
         .then((result) => {
             if (!result) {
                 res.render('user/login', {msg: '用户名或密码错误'});
@@ -60,7 +60,6 @@ function userLogin(req, res, next) {
             let usrInfo = {};
 
             usrInfo[config.userCache.key_name] = result.id;
-            usrInfo.account                    = result.accountNo;
             usrInfo.ipAddress                  = result.ipAddress;
             usrInfo.deviceType                 = result.deviceType;
             usrInfo.signature                  = result.signature;
@@ -115,10 +114,10 @@ function userRegister (req,res,next){
     //返回用户信息
     let usrInfo = {};
 
-    accountSv.getOne({$or:{email:email,accountNo:email}})
+    accountSv.getOne({$or:{email:email,nickname:email}})
     .then(function(result){
         if(!result){
-            return accountSv.createEntity({password:utils.md5(password),email:email,accountNo:email});
+            return accountSv.createEntity({password:utils.md5(password),email:email,nickname:email});
         }else{
             res.render('user/register',{msg:'邮箱已注册'});
             return Promise.reject('normal');
@@ -128,7 +127,6 @@ function userRegister (req,res,next){
         if(result){
             //res.render('user/login')
             usrInfo[config.userCache.key_name] = result.id;
-            usrInfo.account                    = result.accountNo;
             usrInfo.ipAddress                  = result.ipAddress;
             usrInfo.deviceType                 = result.deviceType;
             usrInfo.signature                  = result.signature;

@@ -17,15 +17,28 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             comment  : "用户ID"
         },
-        ip     : {
-            field    : "ip",
-            type     : DataTypes.STRING(45),
-            allowNull: false
-        },
         device : {
             field    : "device",
             type     : DataTypes.STRING(45),
-            allowNull: false
+            allowNull: false,
+            comment     : "设备号"
+        },
+        deviceType     : {
+            field       : "device_type",
+            type        : DataTypes.ENUM,
+            values      : ["0", "1", "2"],
+            allowNull   : false,
+            defaultValue: '0',
+            comment     : "设备类型 0电脑 1:手机 2平板"
+
+        },
+        ipAddress     : {
+            field       : "ip_address",
+            type        : DataTypes.STRING(15),
+            allowNull   : false,
+            defaultValue: '',
+            comment     : "IP地址"
+
         },
         createTime  : {
             field       : "create_time",

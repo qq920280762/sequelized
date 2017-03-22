@@ -19,6 +19,14 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: '',
             comment     : "头像"
         },
+        cellphone      : {
+            field    : "cellphone",
+            type     : DataTypes.STRING(15),
+            allowNull: false,
+            defaultValue: '',
+            unique   : "cellphone_UNIQUE",
+            comment  : "手机号"
+        },
         email: {
             field       : "email",
             type        : DataTypes.STRING(45),
@@ -53,21 +61,6 @@ module.exports = function (sequelize, DataTypes) {
             allowNull   : false,
             defaultValue: '2',
             comment     : "性别 0男 1女 2保密"
-        },
-        cellphone      : {
-            field    : "cellphone",
-            type     : DataTypes.STRING(15),
-            allowNull: false,
-            defaultValue: '',
-            unique   : "cellphone_UNIQUE",
-            comment  : "手机号"
-        },
-        accountNo   : {
-            field    : "account_no",
-            type     : DataTypes.STRING(45),
-            allowNull: false,
-            unique   : 'accountNo_UNIQUE',
-            comment  : "账号"
         },
         userId:{
             field    : "user_id",
