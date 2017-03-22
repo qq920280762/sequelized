@@ -62,8 +62,8 @@ module.exports = function (sequelize, DataTypes) {
             unique   : "cellphone_UNIQUE",
             comment  : "手机号"
         },
-        accountNo:{
-            field    : "account_no",
+        userId:{
+            field    : "user_id",
             type     : DataTypes.STRING(45),
             allowNull: false,
             unique   : "accountNo_UNIQUE",

@@ -24,12 +24,19 @@ module.exports = function (sequelize, DataTypes) {
             unique   : 'accountNo_UNIQUE',
             comment  : "账号"
         },
-        accountMail : {
-            field       : "account_mail",
-            type        : DataTypes.STRING(30),
+        header: {
+            field       : "header",
+            type        : DataTypes.STRING(100),
             allowNull   : false,
             defaultValue: '',
-            unique      : 'accountMail_UNIQUE',
+            comment     : "头像"
+        },
+        email: {
+            field       : "email",
+            type        : DataTypes.STRING(45),
+            allowNull   : false,
+            defaultValue: '',
+            unique   : 'email_UNIQUE',
             comment     : "邮箱"
         },
         qqOpenId    : {
@@ -67,6 +74,7 @@ module.exports = function (sequelize, DataTypes) {
             comment  : "密码"
         }
     }, {
+        initialAutoIncrement:1000,
         comment: "用户基本信息表"
     });
 }

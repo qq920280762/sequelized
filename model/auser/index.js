@@ -10,3 +10,10 @@ if (config.model.isSynchronized) {
             console.error(e);
         });
 }
+module.exports.RegisterLogs = orm.auserdb.import('RegisterLogs');
+if (config.model.isSynchronized) {
+    this.RegisterLogs.sync({force: config.model.mustCreate})
+        .catch(function (e) {
+            console.error(e);
+        });
+}
