@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             unique       : "id_UNIQUE",
             //注意comment在V1.7+后对字段无效 只对表有效
-            comment      : "用户ID"
+            comment      : "账号ID"
         },
         header: {
             field       : "header",
@@ -62,12 +62,20 @@ module.exports = function (sequelize, DataTypes) {
             unique   : "cellphone_UNIQUE",
             comment  : "手机号"
         },
+        accountNo   : {
+            field    : "account_no",
+            type     : DataTypes.STRING(45),
+            allowNull: false,
+            unique   : 'accountNo_UNIQUE',
+            comment  : "账号"
+        },
         userId:{
             field    : "user_id",
             type     : DataTypes.STRING(45),
-            allowNull: false,
-            unique   : "accountNo_UNIQUE",
-            comment  : "账号"
+            allowNull: true,
+            defaultValue: '',
+            unique   : "userId_UNIQUE",
+            comment  : "userId"
         },
         createTime     : {
             field       : "create_time",
