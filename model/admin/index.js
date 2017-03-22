@@ -52,6 +52,13 @@ if (config.model.isSynchronized) {
             console.error(e);
         });
 }
+module.exports.RegisterLogs = orm.admindb.import('RegisterLogs');
+if (config.model.isSynchronized) {
+    this.RegisterLogs.sync({force: config.model.mustCreate})
+        .catch(function (e) {
+            console.error(e);
+        });
+}
 module.exports.Menu = orm.admindb.import('Menu');
 if (config.model.isSynchronized) {
     this.Menu.sync({force: config.model.mustCreate})

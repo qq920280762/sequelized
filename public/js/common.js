@@ -141,7 +141,7 @@ function getUUID(domain) {
 //收集pv数据
 (function(){
     var href = window.location.host + window.location.pathname;
-    var channel = getQueryString("bdcid");
+    var channel = getQueryString("cid");
     var uuid = getUUID(href);
     //来源
     var from = 0,
@@ -154,5 +154,5 @@ function getUUID(domain) {
     }else if (is_ios()) {
         browser = 1; //iOS
     }
-    $$.post('/pv/collect', {href: href, channel: channel, from: from, browser: browser,uuid:uuid});
+    //$$.post('/pv/collect', {href: href, channel: channel, from: from, browser: browser,uuid:uuid});
 })();
