@@ -38,7 +38,7 @@
     },
     "model" : {
       "isSynchronized":true,
-      "mustCreate":true
+      "mustCreate":false
     },
     "CDN":"/static/"
 
