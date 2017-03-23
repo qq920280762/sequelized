@@ -45,9 +45,10 @@
          sortName:'createTime' 定义排序列,通过url方式获取数据填写字段名，否则填写下标
          sortOrder:'desc' 定义排序方式 'asc' 或者 'desc'
          showToggle: 'true' 是否显示 切换试图（table/card）按钮
-         showExport:'true' 是否显示导出
          showColumns:'true' 是否显示所有的列
          showRefresh:'true' 是否显示刷新按钮
+
+         showExport:'true' 是否显示导出
          detailView:'true' 是否显示细节(加号)
          detailFormatter:'detailFormatter' 细节格式 (自定义方法)
     -->
@@ -69,13 +70,14 @@
         <thead>
 
         <!--
-             sortable: false 是否显示排序
+             checkbox:'true' 复选框
+             sortable:'true' 是否可排序
              sortOrder:'desc' 排序方式
-             editable:'true' 是否可编辑
-             formatter:'operateFormatter' 编辑按钮HTML样式 (自定义方法)
-             events:'operateEvents' 编辑按钮绑定触发事件 (自定义方法)
+             formatter:'operateFormatter' 点赞和删除按钮的 HTML样式 (自定义方法)
+             events:'operateEvents' 点赞和删除按钮 绑定事件 (自定义方法)
              align:'center' 对齐方式
-             checkbox:'复选框'
+
+             editable:'true' 是否可编辑
         -->
         <tr>
             <th data-field="state" data-checkbox="true"data-align="center" >Item ID</th>
@@ -144,7 +146,18 @@
         // push or splice the selections if you want to save all data selections
     });
 
-    /*操作数据的日志*/
+    /* 格式化一条数据 , 然后把格式化后的HTML显示在这条数据下方 */
+    function detailFormatter(index, row) {
+        var html = [];
+        $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+        });
+        return html.join('');
+    }
+    /**
+     * 以下数据都是编辑页面的数据如果不需要这些功能,可以砍掉
+     */
+    /* 操作数据的日志*/
     $table.on('all.bs.table', function (e, name, args) {
         //console.log(name, args);
     });
@@ -163,14 +176,6 @@
         });
         $remove.prop('disabled', true);
     });
-    /* 格式化一条数据 , 然后把格式化后的HTML显示在这条数据下方 */
-    function detailFormatter(index, row) {
-        var html = [];
-        $.each(row, function (key, value) {
-            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
-        });
-        return html.join('');
-    }
     /* 为调用的单元格赋值两个编辑按钮:like和remove */
     function operateFormatter(value, row, index) {
         return [
