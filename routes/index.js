@@ -1,3 +1,4 @@
+'use strict';
 var express      = require('express');
 var router       = express.Router();
 var services     = require('../services');
@@ -6,27 +7,30 @@ var adminService = services.admin;
 
 
 const users = require('./users');
+const sys = require('./sys');
+
 router.use('/users', users);
+router.use('/sys', sys);
 
-/* GET home page. */
 
-router.get('/index', function (req, res, next) {
+/**
+ * 进入首页
+ */
+router.get('/index',get_login);
+/**
+ * 进入登录页
+ */
+router.get('/login', get_login);
+
+function get_login(req, res, next) {
     if (req[config.userCache.name]) {
         res.redirect('/');
     }
     else {
         res.render('user/login');
     }
-});
+}
 
-router.get('/login', function (req, res, next) {
-    if (req[config.userCache.name]) {
-        res.redirect('/');
-    }
-    else {
-        res.render('user/login');
-    }
-});
 
 router.get('/register', function (req, res, next) {
     if (req[config.userCache.name]) {
