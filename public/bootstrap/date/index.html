@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../base/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../table/css/bootstrap-table.css">
+    <link rel="stylesheet" href="../table/css/bootstrap-editable.css">
+    <link rel="stylesheet" href="bootstrap-datepicker.css">
+
+    <!--[if lt IE 9]>
+    <script src="../iefix/html5shiv.min.js"></script>
+    <script src="../iefix/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+
+    <div id="toolbar" class="btn-group">
+        <div class="input-group input-daterange">
+            <input type="text" class="form-control datepicker startTime" value="2017-03-21">
+            <div class="input-group-addon">~</div>
+            <input type="text" class="form-control datepicker endTime" value="2017-03-27">
+        </div>
+    </div>
+    <!--
+         toolbar:'#toolbar' 指明自定义的toolbar
+         toggle:'table' 不用写 JavaScript 直接启用表格
+         url:'/api/user/list' 服务器数据的加载地址
+         dataType:'json' 服务器返回的数据类型
+         queryParamsType:'limit' 设置为 'limit' 则会发送符合 RESTFul 格式的参数
+         method:'get' 服务器数据的请求方式 'get' or 'post'
+         cache:'true' 设置为 false 禁用 AJAX 数据缓存
+         classes:'table-no-bordered' 边框样式(无边框)
+         idField:'userId' 指定主键列
+         height:'500' 自定义表格高度
+         undefinedText:'-' 当数据为 undefined 时显示的字符
+         striped: 'true' 是否显示行间隔色
+         pagination:'true' 是否分页
+         showPaginationSwitch:'true' 是否显示'分页栏隐藏/显示开关'
+         paginationLoop:'true' 设置为 true 启用分页条无限循环的功能。
+         queryParams:oTableInit.queryParams 传递参数
+         sidePagination:'server' 分页方式 client/server
+         pageNumber:1 初始化加载一页
+         pageSize:10 每页行数
+         pageList: [10, 25, 50, 100], 可供选择的每页的行数
+         search:'true' 是否显示搜索框(前端搜索)
+         searchText:'' 初始化搜索文字
+         searchTimeOut:'500' 设置搜索超时时间
+         searchOnEnterKey:'false' 设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
+         strictSearch:'false' 设置为 true启用 全匹配搜索，否则为模糊搜索
+         sortName:'createTime' 定义排序列,通过url方式获取数据填写字段名，否则填写下标
+         sortOrder:'desc' 定义排序方式 'asc' 或者 'desc'
+         showToggle: 'true' 是否显示 切换试图（table/card）按钮
+         showColumns:'true' 是否显示所有的列
+         showRefresh:'true' 是否显示刷新按钮
+
+         showExport:'true' 是否显示导出
+         detailView:'true' 是否显示细节(加号)
+         detailFormatter:'detailFormatter' 细节格式 (自定义方法)
+    -->
+
+    <table id="table"
+           data-toggle="table"
+           data-url="http://10.0.0.121:3000/api/user/list"
+           data-show-refresh="true"
+           data-show-toggle="true"
+           data-show-columns="true"
+           data-search="true"
+           data-pagination="true",
+           data-show-pagination-switch="true",
+           data-show-export="true"
+           data-detail-view="true"
+           data-detail-formatter="detailFormatter"
+           data-id-field="userId"
+
+           data-query-params="queryParams"
+           data-toolbar="#toolbar"
+
+           >
+        <thead>
+
+        <!--
+             checkbox:'true' 复选框
+             sortable:'true' 是否可排序
+             sortOrder:'desc' 排序方式
+             formatter:'operateFormatter' 点赞和删除按钮的 HTML样式 (自定义方法)
+             events:'operateEvents' 点赞和删除按钮 绑定事件 (自定义方法)
+             align:'center' 对齐方式
+
+             editable:'true' 是否可编辑
+        -->
+        <tr>
+            <th data-field="state" data-checkbox="true"data-align="center" >Item ID</th>
+            <th data-field="userId" data-align="left" data-align="center">用户ID</th>
+            <th data-field="isOnline" data-align="center">在线状态</th>
+            <th data-field="gems" data-sortable="true" data-editable="true" data-align="center">房卡数量
+            </th>
+            <th data-field="gameTimes" data-sortable="true" data-align="center">游戏局数</th>
+            <th data-field="deviceType" data-align="center">设备类型</th>
+            <th data-field="apkVersion" data-align="center">客户端版本号</th>
+            <th data-field="lastLoginTime" data-sortable="true" data-align="center">最后登录时间</th>
+            <th data-field="createTime" data-sortable="true" data-align="center">账号注册时间</th>
+            <th data-field="operate" data-events="operateEvents"
+                data-formatter="operateFormatter" data-align="center" > 编 辑
+            </th>
+        </tr>
+
+        </thead>
+    </table>
+
+
+</div>
+<script src="../base/js/jquery-1.11.1.min.js"></script>
+<script src="../base/js/bootstrap.min.js"></script>
+
+<script src="../table/js/bootstrap-table.js"></script>
+<script src="../table/js/bootstrap-table-export.js"></script>
+<script src="../table/js/bootstrap-tableExport.js"></script>
+<script src="../table/js/bootstrap-table-editable.js"></script>
+<script src="../table/js/bootstrap-editable.js"></script>
+<script src="../table/../local/bootstrap-table-zh-CN.js"></script>
+
+
+<script src="bootstrap-datepicker.js"></script>
+<script src="bootstrap-datepicker.zh-CN.js"></script>
+
+
+
+<script>
+    // 时间
+    var startTime = $('.startTime').val();
+    var endTime = $('.endTime').val();
+
+    $('.datepicker').datepicker({
+        format        : 'yyyy/mm/dd',
+        language      : 'zh-CN',
+        autoclose     : true,
+        endDate       : '0d',
+        todayHighlight: true
+    });
+
+    function queryParams(params) {
+        return {
+            limit    : params.limit,
+            offset   : params.offset,
+            search   : params.search,
+            sort     : params.sort,
+            order    : params.order,
+            startTime: startTime,
+            endTime  : endTime
+        }
+    }
+
+    $('.datepicker').on('changeDate', function () {
+        var $this = $(this);
+        var time  = $this.val();
+        if ($this.hasClass('endTime')) {
+            endTime = time;
+            $('.fixed-table-toolbar').find('button[name="refresh"]').click();
+        }
+        else if ($this.hasClass('startTime')) {
+            startTime = time;
+            $('.fixed-table-toolbar').find('button[name="refresh"]').click();
+        }
+    });
+
+
+    /* table编辑 */
+    var $table = $('#table'),
+            selections = [];
+
+    /* 加载数据 */
+    $table.on('expand-row.bs.table', function (e, index, row, $detail) {
+        if (index % 2 == 1) {
+            $detail.html('Loading from ajax request...');
+            $.get('LICENSE', function (res) {
+                $detail.html(res.replace(/\n/g, '<br>'));
+            });
+        }
+    });
+    /* 初始化判断删除按钮是否Disabled,并加载每条数据(用某个key做ID) */
+    $table.on('check.bs.table uncheck.bs.table ' +
+            'check-all.bs.table uncheck-all.bs.table', function () {
+        // save your data, here just save the current page
+        selections = getIdSelections();
+        // push or splice the selections if you want to save all data selections
+    });
+
+    /* 格式化一条数据 , 然后把格式化后的HTML显示在这条数据下方 */
+    function detailFormatter(index, row) {
+        var html = [];
+        $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+        });
+        return html.join('');
+    }
+    /**
+     * 以下数据都是编辑页面的数据如果不需要这些功能,可以砍掉
+     */
+    /* 操作数据的日志*/
+    $table.on('all.bs.table', function (e, name, args) {
+        //console.log(name, args);
+    });
+    /* 每一行获取一个key,以后就作为这条数据的ID,方便编辑 */
+    function getIdSelections() {
+        return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.userId
+        });
+    }
+    /* 为调用的单元格赋值两个编辑按钮:like和remove */
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="like" href="javascript:void(0)" title="Like">',
+            '<i class="glyphicon glyphicon-heart"></i>',
+            '</a>  ',
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+    /* 为编辑按钮like和remove绑定事件 */
+    window.operateEvents = {
+        'click .like'  : function (e, value, row, index) {
+            alert('You click like action, row: ' + JSON.stringify(row));
+        },
+        'click .remove': function (e, value, row, index) {
+            $table.bootstrapTable('remove', {
+                field : 'userId',
+                values: [row.userId]
+            });
+        }
+    };
+</script>
+
+</body>
+</html>
