@@ -5,6 +5,7 @@ var services     = require('../services');
 var config       = require('../config');
 var adminService = services.admin;
 
+console.info('loading routes...');
 
 const users = require('./users');
 const sys = require('./sys');

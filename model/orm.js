@@ -3,7 +3,6 @@
 const Sequelize = require('sequelize');
 const config    = require('../dbSource');
 
-
 module.exports.admindb = new Sequelize(
     config.admindb.database,
     config.admindb.user,
