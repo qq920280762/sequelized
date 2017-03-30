@@ -33,9 +33,7 @@ Base.prototype.getAll = function (where, page, pageSize, order) {
     return new Promise((resolve, reject) => {
         let model = this.model;
 
-        let options = {
-            order: 'id desc'
-        };
+        let options = {}
         if(!!where){
             options.where = where;
         }

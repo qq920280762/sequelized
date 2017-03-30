@@ -35,12 +35,11 @@ router.post('/register', userRegister);
 function userLogin(req, res, next) {
     var account    = req.body.account;
     var password   = req.body.pwd;
-    res.locals.msg = "";
     if (!account || !password) {
         return res.render('user/login', {msg: '账号或密码不能为空'});
     }
     //实例化
-    let accountSv = new adminService.accountService();
+    let accountSv = adminService.accountService;
 
     accountSv.getOne({password: utils.md5(password), $or: {cellphone: account, nickname: account,email: account}})
         .then((result) => {
@@ -48,7 +47,7 @@ function userLogin(req, res, next) {
                 res.render('user/login', {msg: '用户名或密码错误'});
                 return Promise.reject("normal");
             }
-            if (!result.dataValues.id) {
+            if (!result.id) {
                 res.render('user/login', {msg: '此账号暂时无法登陆'});
                 return Promise.reject("normal");
             }
@@ -105,12 +104,11 @@ function userLogout(req, res, next) {
 function userRegister (req,res,next){
     var email    = req.body.email;
     var password   = req.body.pwd;
-    res.locals.msg = "";
     if (!email || !password) {
         return res.render('user/login', {msg: '邮箱或密码不能为空'});
     }
     //实例化
-    let accountSv = new adminService.accountService();
+    let accountSv = adminService.accountService;
 
     //返回用户信息
     let usrInfo = {};

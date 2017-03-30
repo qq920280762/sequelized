@@ -3,7 +3,7 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('account', {
         id             : {
-            field        : "account_id",
+            field        : "id",
             type         : DataTypes.INTEGER(11).UNSIGNED,
             allowNull    : false,
             primaryKey   : true,

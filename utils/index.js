@@ -91,17 +91,17 @@ function encryption(options) {
  * @param exclude
  * @returns {string}
  */
-function sign(options,exclude=[]){
-    var keys = Object.keys(options),
+function sign(options, exclude = []) {
+    var keys  = Object.keys(options),
         sigin = '';
     keys.sort();
     keys.reverse();
     keys.forEach(function (key) {
-        if(exclude.indexOf(key)<0){
+        if (exclude.indexOf(key) < 0) {
             sigin += '&' + key + '=' + options[key].toString().trim();
         }
     });
-    sigin = encryption({content:sigin.substr(1)});
+    sigin = encryption({content: sigin.substr(1)});
     return sigin;
 };
 
@@ -149,24 +149,38 @@ function getIpAddress(req) {
     return ipAddress;
 };
 
-/**
- * 递归获取树数
- * @param data
- * @param pid
- * @returns {Array}
- */
-function tree(data,pid){
-    var result = [] , temp;
-    for(var i in data){
-        if(data[i].pid==pid){
-            result.push(data[i]);
-            temp = tree(data,data[i].id);
-            if(temp.length>0){
-                data[i].children=temp;
+
+function treesEncode(data, pid) {
+    var trees = [], temp;
+    for (var i in data) {
+        if (data[i].pid == pid) {
+            trees.push(data[i]);
+            temp = treesEncode(data, data[i].id);
+            if (temp.length > 0) {
+                data[i].children = temp;
             }
         }
     }
-    return result;
+    return trees;
+}
+
+
+function treesDecode(trees) {
+    var result = [];
+    for (var i in trees) {
+        var one = {},tree = trees[i];
+        for (var k in tree) {
+            if ('children' != k) {
+                one[k] = tree[k];
+            }
+        }
+        result.push(one);
+        if (tree.children) {
+            result.concat(tree.children);
+        }
+    }
+
+    return result;
 }
 
 module.exports.getLogTime   = getLogTime;
@@ -174,7 +188,8 @@ module.exports.hideTextInfo = hideTextInfo;
 module.exports.getIpAddress = getIpAddress;
 module.exports.getUUID      = getUUID;
 module.exports.encryption   = encryption;
-module.exports.sign   = sign;
+module.exports.sign         = sign;
 module.exports.md5          = md5;
 module.exports.keyDesc      = keyDesc;
-module.exports.getTree      = tree;
+module.exports.treesEncode  = treesEncode;
+module.exports.treesDecode  = treesDecode;

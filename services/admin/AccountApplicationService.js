@@ -11,4 +11,21 @@ function AccountApplicationService() {
 //继承BaseDao
 util.inherits(AccountApplicationService, Base);
 
+AccountApplicationService.prototype.getApplicationId = function(accountId){
+    return new Promise(function(resolve,reject){
+        model.admin.AccountApplication.findOne({
+           where:{
+               accountId:accountId
+           }
+       })
+        .then(function(results){
+            resolve((results||{}).id);
+        })
+        .catch(function(err){
+           reject(err);
+        });
+    });
+}
+
+
 module.exports = AccountApplicationService;

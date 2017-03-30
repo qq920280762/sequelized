@@ -44,7 +44,7 @@ router.get('/register', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
     if (req[config.userCache.name]) {
-        var accountSv = new adminService.accountService();
+        var accountSv = adminService.accountService;
         accountSv.getOne({id: req[config.userCache.name][config.userCache.key_name]})
             .then(function (results) {
                 if (results) {

@@ -12,14 +12,14 @@ const RoleService               = require('./RoleService');
 
 
 module.exports = {
-    accountApplicationService: AccountApplicationService,
-    accountRoleService       : AccountRoleService,
-    accountService           : AccountService,
-    applicationService       : ApplicationService,
-    buttonService            : ButtonService,
-    editLogsService          : EditLogsService,
-    loginLogsService         : LoginLogsService,
-    menuService              : MenuService,
-    privilegeService         : PrivilegeService,
-    roleService              : RoleService
+    accountApplicationService: new AccountApplicationService(),
+    accountRoleService       : new AccountRoleService(),
+    accountService           : new AccountService(),
+    applicationService       : new ApplicationService(),
+    buttonService            : new ButtonService(),
+    editLogsService          : new EditLogsService(),
+    loginLogsService         : new LoginLogsService(),
+    menuService              : new MenuService(),
+    privilegeService         : new PrivilegeService(),
+    roleService              : new RoleService()
 }

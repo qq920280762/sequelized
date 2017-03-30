@@ -51,18 +51,18 @@ router.delete('/',function(req,res,next){
 function get(accountId){
 
     return new Promise(function (resolve, reject) {
-        let accountApplicationSv = adminService.accountApplicationService,
-            applicationSv = adminService.applicationService;
-        accountApplicationSv.getApplicationId(accountId)
+        let accountRoleSv = adminService.accountRoleService,
+            roleSv = adminService.roleService;
+        accountRoleSv.getRoleId(accountId)
         .then(function(results){
             if(results){
-                return applicationSv.getAllById(results);
+                return roleSv.getAllById(results);
             }
         })
         .then(function(results){
             let trees = utils.treesEncode(results,results[results.length-1].pid);
-            let applications = utils.treesDecode([trees[0]]);
-            resolve(applications||[]);
+            let roles = utils.treesDecode([trees[0]]);
+            resolve(roles||[]);
         })
         .catch(function(err){
            reject(err);
@@ -74,8 +74,8 @@ function get(accountId){
 
 function save(bean){
     return new Promise(function (resolve, reject) {
-        let  applicationSv = adminService.applicationService;
-        applicationSv.createEntity(bean)
+        let roleSv = adminService.roleService;
+        roleSv.createEntity(bean)
         .then(function(results){
             resolve(results);
         })
@@ -89,8 +89,8 @@ function save(bean){
 function update(bean){
 
     return new Promise(function (resolve, reject) {
-        let applicationSv = adminService.applicationService;
-        applicationSv.updateByParams(bean,{id:bean.id})
+        let roleSv = adminService.roleService;
+        roleSv.updateByParams(bean,{id:bean.id})
         .then(function(results){
             resolve(results);
         })
@@ -102,11 +102,11 @@ function update(bean){
 }
 function destroy(id){
     return new Promise(function (resolve, reject) {
-        let applicationSv = adminService.applicationService;
-        applicationSv.getCountByPid(id)
+        let roleSv = adminService.roleService;
+        roleSv.getCountByPid(id)
         .then(function(results){
             if(!results){
-                return applicationSv.destroy({id:id});
+                return roleSv.destroy({id:id});
             }
         })
         .then(function(results){
@@ -120,7 +120,7 @@ function destroy(id){
 }
 
 module.exports = router;
-module.exports.get_applications = get;
-module.exports.save_applications = save;
-module.exports.update_applications = update;
-module.exports.destroy_applications = destroy;
+module.exports.get_roles = get;
+module.exports.save_roles = save;
+module.exports.update_roles = update;
+module.exports.destroy_roles = destroy;

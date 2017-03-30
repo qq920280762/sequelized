@@ -11,4 +11,40 @@ function RoleService() {
 //继承BaseDao
 util.inherits(RoleService, Base);
 
+RoleService.prototype.getAllById = function(id){
+    return new Promise(function(resolve,reject){
+        model.admin.Role.findAll({
+                where:{
+                    id:{
+                        $gte:id
+                    }
+                },
+                order:'id desc'
+            })
+            .then(function(results){
+                resolve(results);
+            })
+            .catch(function(err){
+                reject(err);
+            });
+    });
+}
+
+RoleService.prototype.getCountByPid = function(pid){
+    return new Promise(function(resolve,reject){
+        model.admin.Role.count({
+                where:{
+                    pid:pid
+                }
+            })
+            .then(function(results){
+                resolve(results);
+            })
+            .catch(function(err){
+                reject(err);
+            })
+    });
+}
+
+
 module.exports = RoleService;

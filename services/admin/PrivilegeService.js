@@ -11,4 +11,23 @@ function PrivilegeService() {
 //继承BaseDao
 util.inherits(PrivilegeService, Base);
 
+PrivilegeService.prototype.getAllByMaster = function(master,masterValues,access){
+    return new Promise(function(resolve,reject){
+        model.admin.Privilege.findAll({
+                where:{
+                    master:master,
+                    masterValue:{$in:masterValues},
+                    access:access
+                }
+            })
+            .then(function(results){
+                resolve(results);
+            })
+            .catch(function(err){
+                reject(err);
+            });
+    });
+
+}
+
 module.exports = PrivilegeService;

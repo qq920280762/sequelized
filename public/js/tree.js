@@ -20,7 +20,7 @@ tree.prototype.loadElement = function (treeData) {
         var li       = document.createElement('li');
         li.className = 'sidebar-nav-link';
         var a        = document.createElement('a');
-        a.href       = treeData[i].value;
+        a.href       = treeData[i].url;
         if (treeData[i].children) {
             a.className = 'sidebar-nav-sub-title';
         }

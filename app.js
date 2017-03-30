@@ -100,7 +100,6 @@ app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.SESSION = req.session;
     res.locals.CDN     = config.CDN;
-    console.log(req.app.get('env'));
     res.locals.message = req.app.get('env') === 'development' ? err.message : 'invited fail';
     res.locals.error   = req.app.get('env') === 'development' ? err : {};
     // render the error page

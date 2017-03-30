@@ -3,7 +3,7 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('privilege', {
         id                  : {
-            field        : "privilege_id",
+            field        : "id",
             type         : DataTypes.INTEGER(11).UNSIGNED,
             allowNull    : false,
             unique       : "id_UNIQUE",
@@ -27,15 +27,15 @@ module.exports = function (sequelize, DataTypes) {
         access     : {
             field    : "access",
             type     : DataTypes.ENUM,
-            values   : ["menu_no", "btn_no"],
+            values   : ["menu_id", "button_id"],
             allowNull: false,
-            comment  : "菜单号或按钮号"
+            comment  : "菜单号或按钮ID"
         },
         accessValue: {
             field    : "access_value",
-            type     : DataTypes.STRING(45),
+            type     : DataTypes.INTEGER(11).UNSIGNED,
             allowNull: false,
-            comment  : "用户ID或者角色ID的值"
+            comment  : "菜单或按钮ID的值"
         },
         status  : {
             field       : "privilege_operation",

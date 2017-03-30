@@ -37,7 +37,7 @@
       "key_name" : "userId"
     },
     "model" : {
-      "isSynchronized":true,
+      "isSynchronized":false,
       "mustCreate":false
     },
     "CDN":"/static/"

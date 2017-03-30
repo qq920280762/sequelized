@@ -11,25 +11,18 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             comment      : "菜单ID"
         },
-        menNo       : {
-            field    : "men_no",
-            type     : DataTypes.STRING(45),
-            allowNull: false,
-            unique   : "no_UNIQUE",
-            comment  : '菜单编号'
-        },
         applicationId: {
             field    : "application_id",
             type     : DataTypes.INTEGER(11).UNSIGNED,
             allowNull: false,
             comment  : "域id"
         },
-        pMenNo : {
-            field       : "p_men_no",
-            type        : DataTypes.STRING(45),
+        pid : {
+            field       : "pid",
+            type        : DataTypes.INTEGER(11).UNSIGNED,
             allowNull   : false,
-            defaultValue: -1,
-            comment     : "上级菜单编号"
+            defaultValue:0,
+            comment     : "上级菜单"
         },
         name     : {
             field    : "name",
@@ -50,6 +43,14 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             defaultValue:'',
             comment  : "菜单icon"
+        },
+        createTime     : {
+            field       : "create_time",
+            type        : DataTypes.DATE,
+            allowNull   : false,
+            defaultValue: DataTypes.NOW,
+            comment     : "创建时间"
+
         }
     }, {
         comment: "菜单表"

@@ -3,7 +3,7 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('role', {
         id             : {
-            field        : "role_id",
+            field        : "id",
             type         : DataTypes.INTEGER(11).UNSIGNED,
             allowNull    : false,
             unique       : "id_UNIQUE",
@@ -17,12 +17,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             comment  : "角色名字"
         },
-        roleNo         : {
-            field    : "role_no",
-            type     : DataTypes.STRING(45),
+        pid         : {
+            field    : "pid",
+            type     : DataTypes.INTEGER(11).UNSIGNED,
             allowNull: false,
-            unique   : "no_UNIQUE",
-            comment  : "角色编号"
+            defaultValue:0,
+            comment  : "上级角色"
         },
         memo       : {
             field    : "memo",

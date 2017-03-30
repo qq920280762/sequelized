@@ -11,4 +11,21 @@ function AccountRoleService() {
 //继承BaseDao
 util.inherits(AccountRoleService, Base);
 
+
+AccountRoleService.prototype.getRoleId = function(accountId){
+    return new Promise(function(resolve,reject){
+        model.admin.AccountRole.findOne({
+                where:{
+                    accountId:accountId
+                }
+            })
+            .then(function(results){
+                resolve((results||{}).id);
+            })
+            .catch(function(err){
+                reject(err);
+            });
+    });
+}
+
 module.exports = AccountRoleService;

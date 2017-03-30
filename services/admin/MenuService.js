@@ -11,4 +11,36 @@ function MenuService() {
 //继承BaseDao
 util.inherits(MenuService, Base);
 
+MenuService.prototype.getAllByIdsAndAppIds = function(appIds,ids){
+    return new Promise(function(resolve,reject){
+        model.admin.Menu.findAll({
+            where:{
+                applicationId:{$in:appIds},
+                id:{$in:ids}
+            }
+        })
+        .then(function(results){
+            resolve(results);
+        })
+        .catch(function(err){
+            reject(err);
+        })
+    });
+}
+MenuService.prototype.getCountByPid = function(pid){
+    return new Promise(function(resolve,reject){
+        model.admin.Menu.count({
+                where:{
+                    pid:pid
+                }
+            })
+            .then(function(results){
+                resolve(results);
+            })
+            .catch(function(err){
+                reject(err);
+            })
+    });
+}
+
 module.exports = MenuService;
