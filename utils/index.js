@@ -53,8 +53,11 @@ function getUUID() {
 
 /**
  * 通用加密
- * @param options ( default: config.encryption )
- *      - description: { algorithm:'md5/sha1/aes ',content:'待加密内容 ',key:'salt值,-1为不加salt',charset:'utf8' }
+ * @param {Object} [options=config.encryption] :
+ *                  - {String} algorithm 加密算法类型
+ *                  - {String} content 待加密内容
+ *                  - {String} key 盐
+ *                  - {String} charset 编码方式
  * @returns {*}
  */
 function encryption(options) {
@@ -70,12 +73,7 @@ function encryption(options) {
             content = options.content.toString();
         }
         if (options.key) {
-            if (options.key == -1) {
-                key = '';
-            }
-            else {
-                key = options.key;
-            }
+            key = options.key;
         }
         if (options.charset) {
             charset = options.charset;

@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const cors = require('cors');
 const path    = require('path');
 const favicon = require('serve-favicon');
 //const logger = require('morgan');
@@ -42,6 +43,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 //静态资源路由
 app.use('/static',express.static(path.join(__dirname, 'public')));
+//跨域
+app.use(cors());
 //拦截器
 app.use(sessionFilter);
 
