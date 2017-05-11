@@ -16,6 +16,14 @@
         "resave" : true,
         "saveUninitialized" : true
     },
+    "cache":{
+      "host": "127.0.0.1",
+      "port": 6379,
+      "opts": {
+        "auth_pass": "redispwd"
+      },
+      "db"  : 11
+    },
     "cookie": {
         "domain":null,
         "path": "/",

@@ -13,6 +13,12 @@ const logTemplate   = require('./logTemplate');
 const sessionFilter = require('./sessionFilter');
 const config        = require('./config');
 const utils         = require('./utils');
+const Cache         = require('./utils/cache');
+//初始化自动缓存工具
+const autoCache = new Cache({
+    showUpdateLog: true,
+    store        : new Cache.RedisStore(config.cache)
+});
 
 
 const index = require('./routes/index');
