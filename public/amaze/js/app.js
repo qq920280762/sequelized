@@ -355,15 +355,3 @@ function autoLeftNav() {
         $('.left-sidebar').removeClass('active');
     }
 }
-
-
-// 侧边菜单
-
-$.get('/sys/menus',function(result){
-    new tree().loadHtml(result.data,'0','menu');
-    $('.sidebar-nav-sub-title').on('click', function() {
-        $(this).siblings('.sidebar-nav-sub').slideToggle(80)
-            .end()
-            .find('.sidebar-nav-sub-ico').toggleClass('sidebar-nav-sub-ico-rotate');
-    })
-});
