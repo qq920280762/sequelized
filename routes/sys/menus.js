@@ -110,16 +110,23 @@ function get(accountId){
     });
 
 }
-function save(bean){
+function save(bean,trans){
     return new Promise(function (resolve, reject) {
         let menuSv = adminService.menuService;
-        menuSv.createEntity(bean)
-            .then(function(results){
-                resolve(results);
-            })
-            .catch(function(err){
-                reject(err);
-            });
+        menuSv.createEntity(bean,trans)
+        .then(function(results){
+            return privileges.save_privileges({
+                master:'account_id',
+                masterValue:bean.userId,
+                access:'menu_id',
+                accessValue:results.dataValues.id,
+                acl:15
+            },trans);
+            resolve(results);
+        })
+        .catch(function(err){
+            reject(err);
+        });
 
     });
 

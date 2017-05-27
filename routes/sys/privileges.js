@@ -34,10 +34,10 @@ function get(master,masterValues,access){
 
 }
 
-function save(bean){
+function save(bean,trans){
     return new Promise(function (resolve, reject) {
         let  privilegeSv = adminService.privilegeService;
-        privilegeSv.createEntity(bean)
+        privilegeSv.createEntity(bean,trans)
             .then(function(results){
                 resolve(results);
             })

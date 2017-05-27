@@ -1,6 +1,5 @@
 'use strict';
 var orm    = require('../orm');
-var path   = require('path');
 var config = require('../../config');
 
 module.exports.Account = orm.admindb.import('Account');

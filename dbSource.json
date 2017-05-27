@@ -47,7 +47,7 @@
         "underscored" : true,
         "underscoredAll":true
       },
-      "logging":false,
+      "logging":true,
       "timezone": "+08:00"
     }
   }

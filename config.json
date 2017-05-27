@@ -1,12 +1,12 @@
 {
     "session": {
-        "useRedis": false,
+        "useRedis": true,
         "server"  : {
             "prefix":null,
             "host": "127.0.0.1",
             "port": 6379,
-            "pass": "redispwd",
-            "db"  : 9,
+            "pass": "123456",
+            "db"  : 15,
             "ttl" :600,
             "logErrors" : true
         },
@@ -20,9 +20,9 @@
       "host": "127.0.0.1",
       "port": 6379,
       "opts": {
-        "auth_pass": "redispwd"
+        "auth_pass": "123456"
       },
-      "db"  : 11
+      "db"  : 14
     },
     "cookie": {
         "domain":null,
@@ -45,7 +45,7 @@
       "key_name" : "userId"
     },
     "model" : {
-      "isSynchronized":false,
+      "isSynchronized":true,
       "mustCreate":false
     },
     "CDN":"/static/"

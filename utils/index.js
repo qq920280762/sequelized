@@ -37,7 +37,7 @@ function getLogTime() {
 
 function md5(str) {
     var md5sum = crypto.createHash('md5');
-    md5sum.update(str);
+    md5sum.update(str,'utf-8');
     //noinspection JSUnresolvedFunction
     str = md5sum.digest('hex');
     return str;

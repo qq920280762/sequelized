@@ -1,0 +1,31 @@
+{
+  "WECHAT": {
+    "PAY": {
+      "APPID": "wx1cb441ebe0b96fda",
+      "MCHID": "1464292902",
+      "TRADETYPE": "JSAPI",
+      "BODY": "XXX-商品",
+      "CALLBACKURL": "http://127.0.0.1:3300/cards/pay/callback",
+      "KEY": "liubozigongqipai123456789liubozi",
+      "EXPIREDTIME": 30
+    },
+    "LOGIN": {
+      "REDIRECT_URI": "http://127.0.0.1:3300/users/auth/callback",
+      "SCOPE": "snsapi_base",
+      "APPID": "wx87ce5fabfd717976",
+      "SECRET": "a11f2e58e40018f9f56fde7febab8024"
+    },
+    "JSSDK": {
+      "APPID": "wx1cb441ebe0b96fda",
+      "SECRET": "d85785f02ff8dc0d2ed170f150fcde85"
+    }
+  },
+  "cache": {
+    "host": "127.0.0.1",
+    "port": 6379,
+    "opts": {
+      "auth_pass": "123456"
+    },
+    "db": 14
+  }
+}

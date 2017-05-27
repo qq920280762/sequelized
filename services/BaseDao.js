@@ -5,6 +5,22 @@ function Base(model) {
     this.model = model;
 };
 
+Base.prototype.transBegin = function () {
+    return new Promise((resolve, reject) => {
+        this.model.transaction({
+            autocommit:false,//手动提交
+            type:'IMMEDIATE',//事务开始的锁状态 RESERVED (避免死锁)
+            isolationLevel:'SERIALIZABLE'//事务隔离级别 SERIALIZABLE (一致性读)
+        }).then(function(trans) {
+                resolve(trans);
+        })
+        .catch(function (ex) {
+            reject(ex);
+            throw ex;
+        });
+    });
+};
+
 /**
  * 根据id查询
  * @param {Object} where A hash of search attributes
