@@ -1,7 +1,7 @@
 'use strict';
 const util = require('util');
 const model = require('../../model');
-const Base  = require('../BaseDao');
+const Base  = require('../BaseService');
 
 //构造函数
 function EditLogsService() {

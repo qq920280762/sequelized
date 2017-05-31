@@ -22,14 +22,18 @@ router.get('/',function(req,res,next){
         })
 });
 router.post('/',function(req,res,next){
-    save(req.body)
-        .then(function(results){
-            res.jsonp({code:1,msg:'success',data:results});
-        })
-        .catch(function(err){
-            console.error(err);
-            res.jsonp({code:-99,msg:'未知错误',data:[]});
-        })
+    let menuSv = adminService.menuService;
+    menuSv.transBegin()
+    .then((trans)=>{
+      return save(req.body,trans);
+    })
+    .then(function(results){
+        res.jsonp({code:1,msg:'success',data:results});
+    })
+    .catch(function(err){
+        console.error(err);
+        res.jsonp({code:-99,msg:'未知错误',data:[]});
+    })
 });
 router.put('/',function(req,res,next){
     update(req.body)

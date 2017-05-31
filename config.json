@@ -1,6 +1,6 @@
 {
     "session": {
-        "useRedis": true,
+        "useRedis": false,
         "server"  : {
             "prefix":null,
             "host": "127.0.0.1",

@@ -7,8 +7,8 @@ function Base(model) {
 
 Base.prototype.transBegin = function () {
     return new Promise((resolve, reject) => {
-        this.model.transaction({
-            autocommit:false,//手动提交
+        this.model.sequelize.transaction({
+            autocommit:false,//自动提交
             type:'IMMEDIATE',//事务开始的锁状态 RESERVED (避免死锁)
             isolationLevel:'SERIALIZABLE'//事务隔离级别 SERIALIZABLE (一致性读)
         }).then(function(trans) {
@@ -135,7 +135,7 @@ Base.prototype.createEntity = function (entity, tran) {
     return new Promise((resolve, reject) => {
         let model = this.model;
         let options = {};
-        if (tran && (tran instanceof Transaction)) {
+        if (tran) {
             options.transaction = tran;
         }
         model.create(entity,options).then(function (result) {
@@ -156,7 +156,7 @@ Base.prototype.createEntityBatch = function (entities, tran) {
     return new Promise((resolve, reject) => {
         let model = this.model;
         let options = {};
-        if (tran && (tran instanceof Transaction)) {
+        if (tran) {
             options.transaction = tran;
         }
         return Promise.all(entities.map((entity) => {
@@ -186,7 +186,7 @@ Base.prototype.updateByParams = function (update, where, tran) {
         let options = {
             where:where
         };
-        if (tran && (tran instanceof Transaction)) {
+        if (tran) {
             options.transaction = tran;
         }
         model.update(update,options).then(function (result) {
@@ -209,7 +209,7 @@ Base.prototype.destroy = function (where, tran) {
         let options = {
             where:where
         };
-        if (tran && (tran instanceof Transaction)) {
+        if (tran) {
             options.transaction = tran;
         }
         model.destroy(options).then(function (result) {
