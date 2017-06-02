@@ -1,12 +1,5 @@
-/**
- * Created by matri on 2016-12-16.
- */
-
 'use strict';
 
-/**
- * Imports
- */
 const util = require('util');
 const base = require('./store');
 
