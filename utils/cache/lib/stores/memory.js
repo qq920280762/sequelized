@@ -1,3 +1,7 @@
+/**
+ * Created by matri on 2016-12-16.
+ */
+
 'use strict';
 
 /**
@@ -51,10 +55,18 @@ MemoryStore.prototype.removeByRegex = function (regex) {
  * @param ttl
  */
 MemoryStore.prototype.set = function (hash, key, data, ttl) {
-    if (ttl === null || ttl === undefined) {
-        ttl  = data;
-        data = key;
-        key  = null;
+    //ttl无效
+    if (isNaN(ttl)) {
+        //data 无效
+        if(!data){
+            data  = key;
+            key = null;
+        }else if(typeof data == 'number'){
+            ttl   = data;
+            data  = key;
+            key = null;
+        }
+
     }
     if (!!key) {
         hash += '-' + key;

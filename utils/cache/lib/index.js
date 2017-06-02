@@ -1,3 +1,6 @@
+/**
+ * Created by matri on 2016-12-16.
+ */
 'use strict';
 
 const MemoryStore = require('./stores/memory');
@@ -19,43 +22,53 @@ AutoCache.prototype.get = function (hash, key, callback, ttl) {
     if (!hash || typeof(hash) != 'string') {
         console.error('hash must be a string value');
     }
-
-    if (typeof(key) == 'function' && !ttl) {
-        ttl      = callback;
+    if (typeof(key) == 'function') {
+        if(!isNaN(callback)){
+            ttl = callback;
+        }
+        if(!isNaN(ttl)){
+            ttl = ttl;
+        }
         callback = key;
-        key      = '';
+        key=null;
+
     }
-    ttl = ttl || this.defaultTTL;
+    ttl = !isNaN(ttl)?ttl:this.defaultTTL;
+
     return new Promise((resolve, reject) => {
         this.store.get(hash, key)
             .then((response) => {
-                if ((!response || ttl == 0) && !!callback) {
-                    //未缓存数据
+                if ((!response || !(ttl > 0) ) && typeof(callback) == 'function') {
+
                     callback((data) => {
-                        if (!data) {
-                            resolve(null);
-                            return;
-                        }
-                        if (ttl == 0) {
+                        //缓存时间无效或者待存数据无效
+                        if (!(ttl > 0) || !data) {
+                            if(response){
+                                this.store.remove(hash, key);
+                            }
                             resolve(data);
-                            return;
+                        }else{
+                            //设置缓存
+                            this.store.set(hash, key, data, ttl)
+                                .then((result) => {
+                                    if (!!data && this.showUpdateLog) {
+                                        let _key = hash;
+                                        if (key) {
+                                            _key += '-' + key;
+                                        }
+                                        console.log('update data cache:' + _key + ' ,ttl:' + ttl);
+                                    }
+                                    resolve(data);
+                                })
+                                .catch((err) => {
+                                    let _key = hash;
+                                    if (key) {
+                                        _key += '-' + key;
+                                    }
+                                    console.error('set Data:' + _key + ' failed,err:' + err);
+                                    resolve(data);
+                                });
                         }
-                        let _key = hash;
-                        if (key != '') {
-                            _key += '-' + key;
-                        }
-                        //获取数据,设置缓存
-                        this.store.set(hash, key, data, ttl)
-                            .then((result) => {
-                                if (!!data && this.showUpdateLog) {
-                                    console.log('update data cache:' + _key + ' ,ttl:' + ttl);
-                                }
-                                resolve(data);
-                            })
-                            .catch((err) => {
-                                console.error('set Data:' + _key + ' failed,err:' + err);
-                                resolve(data);
-                            });
                     });
                 }
                 else {

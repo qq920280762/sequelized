@@ -1,3 +1,7 @@
+/**
+ * Created by matri on 2016-12-16.
+ */
+
 'use strict';
 
 /**
@@ -27,12 +31,12 @@ util.inherits(RedisStore, base.Store);
  * clear all data
  */
 RedisStore.prototype.clear = function () {
-    this.dbUtils.keys('*', (err, keys) => {
+    this.dbClient.keys('*', (err, keys) => {
         if (!!err) {
             console.error(err);
         }
         else {
-            this.dbUtils.del(keys, (err, result) => {
+            this.dbClient.del(keys, (err, result) => {
                 if (!!err) {
                     console.error(err);
                 }
@@ -98,10 +102,18 @@ RedisStore.prototype.removeByRegex = function (regex) {
  * @param ttl
  */
 RedisStore.prototype.set = function (key, field, data, ttl) {
-    if (ttl === null || ttl === undefined) {
-        ttl   = data;
-        data  = field;
-        field = null;
+    //ttl无效
+    if (isNaN(ttl)) {
+        //data 无效
+        if(!data){
+            data  = field;
+            field = null;
+        }else if(typeof data == 'number'){
+            ttl   = data;
+            data  = field;
+            field = null;
+        }
+
     }
     let strData = JSON.stringify(data) || '';
     return new Promise((resolve, reject) => {
@@ -127,7 +139,9 @@ RedisStore.prototype.set = function (key, field, data, ttl) {
                 }
             });
         }
-        this.dbClient.expire(key, ttl);
+        if(!isNaN(ttl)){
+            this.dbClient.expire(key, ttl);
+        }
     });
 };
 
