@@ -5,7 +5,7 @@ const MemoryStore = require('./stores/memory');
 let AutoCache = function (opts) {
     opts               = opts || {};
     this.store         = opts.store || new MemoryStore();
-    this.defaultTTL    = opts.ttl;
+    this.defaultTTL    = opts.ttl; // 单位(s)
     this.showUpdateLog = opts.showUpdateLog || false;
     this.i             = 0;
 };

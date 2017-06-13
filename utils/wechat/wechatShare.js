@@ -97,13 +97,10 @@ let getJsapiTicket = (ACCESS_TOKEN)=> {
  */
 module.exports.getShareOpts = (URL) => {
     let ret       = {
-        nonceStr : utils.randomString(10),
+        nonceStr : utils.randomString(14),
         timestamp: utils.getTimeSamp(),
         url      : URL
     };
-    ret.signature = exports.shareSign(ret);
-
-    ret.appId = APPID;
 
     let access_token, jsapi_ticket;
 
@@ -140,6 +137,8 @@ module.exports.getShareOpts = (URL) => {
                     autoCache.set('JS_API_TICKET', result, 7195);
                 }
                 ret.jsapi_ticket = jsapi_ticket;
+                ret.signature = exports.shareSign(ret);
+                ret.appId = APPID;
                 resolve(ret);
             })
             .catch((error)=> {

@@ -69,7 +69,7 @@ MemoryStore.prototype.set = function (hash, key, data, ttl) {
         let cache        = {data: data};
         cache.updateTime = Date.now();
         if (Number(ttl) > 0) {
-            cache.ttl = Number(ttl);
+            cache.ttl = Number(ttl)*1000;
         }
         this.caches[hash] = cache;
         resolve(data);
@@ -93,7 +93,7 @@ MemoryStore.prototype.get = function (hash, key) {
             return;
         }
         let ttl = cache.ttl || 0;
-        if ((Date.now() - cache.updateTime) >= ttl * 1000) {
+        if ((Date.now() - cache.updateTime) >= ttl) {
             delete this.caches[hash];
             resolve(null);
         }
@@ -111,7 +111,7 @@ MemoryStore.prototype.getAll = function (hash) {
                 let matchVal = key.match(r);
                 if (matchVal) {
                     let ttl = this.caches[key].ttl || 0;
-                    if ((Date.now() - this.caches[key].updateTime) >= ttl * 1000) {
+                    if ((Date.now() - this.caches[key].updateTime) >= ttl) {
                         delete this.caches[key];
                     }
                     else {
