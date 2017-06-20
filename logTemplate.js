@@ -1,86 +1,112 @@
 'use strict';
-const express           = require('express');
-const logger            = require('morgan');
-const fileStreamRotator = require('file-stream-rotator');
-const path              = require('path');
-const fs                = require('fs');
-const config            = require('./config');
-const utils             = require('./utils');
-const logs              = express();
+const express = require('express');
+const logger  = require('morgan');
+const utils   = require('./utils');
+const logs    = express();
+
+let getTime = function () {
+    return '[' + utils.getLogTime() + ']::::\t'
+};
 
 logger.token('nowTime', function () {
-    return utils.getLogTime();
+    return getTime();
 });
 logger.token('ipAddress', function (req) {
     return utils.getIpAddress(req);
 });
 logger.format('self', '\x1b[29m[ :nowTime ] \x1b[34m:ipAddress \x1b[33m:method \x1b[0m:url \x1b[36m:status \x1b[33m:response-time \x1b[0mms');
 
-if (config.log.writeFile) {
-    const logDirectory = path.join(__dirname, 'logs');
-    fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+logs.use(logger('self'));
 
-    const normalLogStream = fileStreamRotator.getStream({
-        date_format: 'YYYYMMDD',
-        filename   : path.join(logDirectory, 'normal-%DATE%.log'),
-        frequency  : 'daily',
-        verbose    : false
-    });
-    logs.use(logger('combined', {stream: normalLogStream}));
-}
-else {
-    logs.use(logger('self'));
-}
-const originError = console.error;
-const originLog   = console.log;
-const originInfo  = console.info;
-const originTrace = console.trace;
-const originWarn  = console.warn;
+let oLog   = console.log;
+let oError = console.error;
+let oWarn  = console.warn;
+let oInfo  = console.info;
+let oTrace = console.trace;
 
-function log(msg) {
-    originLog('[ ' + utils.getLogTime() + ' ] :::: ' + msg);
-}
-function info(msg) {
-    originInfo('[ ' + utils.getLogTime() + ' ] :::: ' + msg);
-}
-function trace(msg) {
-    originTrace('[ ' + utils.getLogTime() + ' ] :::: ' + msg);
-}
 
-function warn(err) {
-    if (typeof(err) == 'string') {
-        originWarn('[ ' + utils.getLogTime() + ' ] :::: ' + err);
+let log = function () {
+    let args = [getTime()];
+    for (let k in arguments) {
+        if (arguments[k] instanceof Error) {
+            args.push(arguments[k]);
+        }
+        else if (arguments[k] instanceof Object) {
+            args.push(JSON.stringify(arguments[k]));
+        }
+        else {
+            args.push(arguments[k]);
+        }
     }
-    else if (err instanceof Error) {
-        originWarn('[ ' + utils.getLogTime() + ' ] :::: ' + err.message + ' status:' + (err.status || '-') + '\n' + err.stack);
-    }
-}
+    oLog.apply(null, args);
+};
 
-function error(err) {
-    let content = "";
-    if (typeof(err) == 'string') {
-        content = '[ ' + utils.getLogTime() + ' ] :::: ' + err;
+let warn  = function () {
+    let args = [getTime()];
+    for (let k in arguments) {
+        if (arguments[k] instanceof Error) {
+            args.push(arguments[k]);
+        }
+        else if (arguments[k] instanceof Object) {
+            args.push(JSON.stringify(arguments[k]));
+        }
+        else {
+            args.push(arguments[k]);
+        }
     }
-    else if (err instanceof Error) {
-        content = '[ ' + utils.getLogTime() + ' ] :::: ' + err.message + ' status:' + (err.status || '-') + '\n' + err.stack;
+    oWarn.apply(null, args);
+};
+let error = function () {
+    let args = [getTime()];
+    for (let k in arguments) {
+        if (arguments[k] instanceof Error) {
+            args.push(arguments[k]);
+        }
+        else if (arguments[k] instanceof Object) {
+            args.push(JSON.stringify(arguments[k]));
+        }
+        else {
+            args.push(arguments[k]);
+        }
     }
-    originError(content);
-    if (config.log.writeFile) {
-        const logDirectory = path.join(__dirname, 'logs');
-        fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-        const errorLogFile = fileStreamRotator.getStream({
-            date_format: 'YYYYMMDD',
-            filename   : path.join(logDirectory, 'error-%DATE%.log'),
-            frequency  : 'daily',
-            verbose    : false
-        });
-        errorLogFile.write(content);
-    }
+    oError.apply(null, args);
+};
 
-}
-console.log    = log;
-console.info   = info;
-console.trace  = trace;
-console.warn   = warn;
-console.error  = error;
+let info = function () {
+    let args = [getTime()];
+    for (let k in arguments) {
+        if (arguments[k] instanceof Error) {
+            args.push(arguments[k]);
+        }
+        else if (arguments[k] instanceof Object) {
+            args.push(JSON.stringify(arguments[k]));
+        }
+        else {
+            args.push(arguments[k]);
+        }
+    }
+    oInfo.apply(null, args);
+};
+
+let trace     = function () {
+    let args = [getTime()];
+    for (let k in arguments) {
+        if (arguments[k] instanceof Error) {
+            args.push(arguments[k]);
+        }
+        else if (arguments[k] instanceof Object) {
+            args.push(JSON.stringify(arguments[k]));
+        }
+        else {
+            args.push(arguments[k]);
+        }
+    }
+    oTrace.apply(null, args);
+};
+console.log   = log;
+console.info  = info;
+console.trace = trace;
+console.warn  = warn;
+console.error = error;
+
 module.exports = logs;
