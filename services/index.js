@@ -1,11 +1,11 @@
 'use strict';
 
 var  admin = require('./admin');
-var  auser = require('./auser');
+var  user = require('./user');
 
 console.info('loading services...');
 
 module.exports = {
     admin:admin,
-    auser:auser
+    user:user
 }

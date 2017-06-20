@@ -1,22 +1,51 @@
 {
   "apps": [
     {
-      "name": "sequelized",
-      "max_memory_restart": "1G",
-      "script": "./bin/www_http",
-      "instances": 4,
+      "name": "dnftp_3000",
+      "max_memory_restart": "250M",
+      "script": "./bin/www",
       "exec_mode": "cluster",
       "watch": true,
       "node_args": "--harmony",
-      "_comment": {
-        "out_file": "./logs/http/nova_out.log",
-        "error_file": "./logs/http/nova_error.log",
-        "env": {
-          "NODE_ENV": "production"
-        },
-        "watch_options": {
-          "usePolling": true
-        }
+      "env": {
+        "HTTP_PORT":3000,
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "dnftp_3001",
+      "max_memory_restart": "250M",
+      "script": "./bin/www",
+      "watch": true,
+      "node_args": "--harmony",
+      "exec_mode": "cluster",
+      "env": {
+        "HTTP_PORT":3001,
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "dnftp_3002",
+      "max_memory_restart": "250M",
+      "script": "./bin/www",
+      "watch": true,
+      "node_args": "--harmony",
+      "exec_mode": "cluster",
+      "env": {
+        "HTTP_PORT":3002,
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "dnftp_3003",
+      "max_memory_restart": "250M",
+      "script": "./bin/www",
+      "watch": true,
+      "node_args": "--harmony",
+      "exec_mode": "cluster",
+      "env": {
+        "HTTP_PORT":3003,
+        "NODE_ENV": "production"
       }
     }
   ]

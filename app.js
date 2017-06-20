@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //cookie解析
 app.use(cookieParser());
 //静态资源路由
-app.use('/static',express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 //跨域
 app.use(cors());
 //拦截器

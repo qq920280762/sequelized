@@ -11,9 +11,9 @@ module.exports.admindb = new Sequelize(
 );
 
 
-module.exports.auserdb = new Sequelize(
-    config.auserdb.database,
-    config.auserdb.user,
-    config.auserdb.password,
-    config.auserdb.properties
+module.exports.userdb = new Sequelize(
+    config.userdb.database,
+    config.userdb.user,
+    config.userdb.password,
+    config.userdb.properties
 );

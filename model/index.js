@@ -1,11 +1,11 @@
 'use strict';
 
 const admin = require('./admin');
-const auser = require('./auser');
+const user = require('./user');
 
-console.info('loading model...');
+console.log('loading model...');
 
 module.exports = {
     admin: admin,
-    auser: auser
+    user: user
 }
