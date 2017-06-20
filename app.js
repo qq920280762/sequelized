@@ -1,4 +1,5 @@
 'use strict';
+require('./logTemplate');//(部署splunk系统,管理日志)
 const express = require('express');
 const cors = require('cors');
 const path    = require('path');
@@ -9,7 +10,7 @@ const bodyParser   = require('body-parser');
 
 const session       = require('express-session');
 const redisStore    = require('connect-redis')(session);
-const logTemplate   = require('./logTemplate');
+//const logTemplate   = require('./logTemplate');
 const sessionFilter = require('./sessionFilter');
 const config        = require('./config');
 const utils         = require('./utils');
@@ -41,7 +42,7 @@ app.set('view engine', 'html');
 //日志格式 : dev格式
 //app.use(logger('dev'));
 //自定义日志格式
-app.use(logTemplate);
+//app.use(logTemplate);
 //请求参数处理
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

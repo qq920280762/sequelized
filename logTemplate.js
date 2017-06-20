@@ -1,22 +1,22 @@
 'use strict';
-const express = require('express');
-const logger  = require('morgan');
+//const express = require('express');
+//const logger  = require('morgan');
 const utils   = require('./utils');
-const logs    = express();
+//const logs    = express();
 
 let getTime = function () {
     return '[' + utils.getLogTime() + ']::::\t'
 };
 
-logger.token('nowTime', function () {
-    return getTime();
-});
-logger.token('ipAddress', function (req) {
-    return utils.getIpAddress(req);
-});
-logger.format('self', '\x1b[29m[ :nowTime ] \x1b[34m:ipAddress \x1b[33m:method \x1b[0m:url \x1b[36m:status \x1b[33m:response-time \x1b[0mms');
-
-logs.use(logger('self'));
+//logger.token('nowTime', function () {
+//    return getTime();
+//});
+//logger.token('ipAddress', function (req) {
+//    return utils.getIpAddress(req);
+//});
+//logger.format('self', '\x1b[29m[ :nowTime ] \x1b[34m:ipAddress \x1b[33m:method \x1b[0m:url \x1b[36m:status \x1b[33m:response-time \x1b[0mms');
+//
+//logs.use(logger('self'));
 
 let oLog   = console.log;
 let oError = console.error;
@@ -109,4 +109,4 @@ console.trace = trace;
 console.warn  = warn;
 console.error = error;
 
-module.exports = logs;
+//module.exports = logs;
