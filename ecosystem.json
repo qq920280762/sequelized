@@ -1,8 +1,7 @@
 {
   "apps": [
     {
-      "name": "dnftp_3000",
-      "max_memory_restart": "250M",
+      "name": "sequelized_3000",
       "script": "./bin/www",
       "exec_mode": "cluster",
       "watch": true,
@@ -13,36 +12,30 @@
       }
     },
     {
-      "name": "dnftp_3001",
-      "max_memory_restart": "250M",
+      "name": "sequelized_3001",
       "script": "./bin/www",
       "watch": true,
       "node_args": "--harmony",
-      "exec_mode": "cluster",
       "env": {
         "HTTP_PORT":3001,
         "NODE_ENV": "production"
       }
     },
     {
-      "name": "dnftp_3002",
-      "max_memory_restart": "250M",
+      "name": "sequelized_3002",
       "script": "./bin/www",
       "watch": true,
       "node_args": "--harmony",
-      "exec_mode": "cluster",
       "env": {
         "HTTP_PORT":3002,
         "NODE_ENV": "production"
       }
     },
     {
-      "name": "dnftp_3003",
-      "max_memory_restart": "250M",
+      "name": "sequelized_3003",
       "script": "./bin/www",
       "watch": true,
       "node_args": "--harmony",
-      "exec_mode": "cluster",
       "env": {
         "HTTP_PORT":3003,
         "NODE_ENV": "production"

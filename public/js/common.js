@@ -32,10 +32,10 @@ function is_android() {
     }
 }
 
-//模板引擎
-function nano(template, data) {
-    return template.replace(/\{([\w\.]*)\}/g, function (str, key) {
-        var keys = key.split("."), v = data[keys.shift()];
+//模板引擎,将'{}'里面的内容动态替换
+function nano(html_template, data) {
+    return html_template.replace(/\{([\w\.]*)\}/g, function (matchstr, kuohaostr,matchstr_index,all_html) {
+        var keys = kuohaostr.split("."), v = data[keys.shift()];
         for (var i = 0, l = keys.length; i < l; i++) v = v[keys[i]];
         return (typeof v !== "undefined" && v !== null) ? v : "";
     });
